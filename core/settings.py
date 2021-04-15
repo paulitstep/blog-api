@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'blog.apps.BlogConfig',
     'blog_api.apps.BlogApiConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,10 +123,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# custom user model
+AUTH_USER_MODEL = 'users.NewUser'
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ]
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
 
 # Default primary key field type
