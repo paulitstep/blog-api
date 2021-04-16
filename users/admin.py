@@ -7,7 +7,7 @@ class UserAdminConfig(UserAdmin):
     model = NewUser
     search_fields = ('email', 'user_name',)
     list_filter = ('email', 'user_name', 'is_staff', 'is_active')
-    list_display = ('email', 'user_name', 'is_staff', 'is_active')
+    list_display = ('email', 'id', 'user_name', 'is_staff', 'is_active')
     ordering = ('-start_date',)
 
     fieldsets = (
